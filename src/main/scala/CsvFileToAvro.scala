@@ -1,6 +1,6 @@
 import org.apache.spark.sql.{SaveMode, SparkSession}
 object CsvFileToAvro extends App {
-  def get_spark_session: SparkSession = {
+  def getSparkSession: SparkSession = {
 
     val spark: SparkSession = SparkSession.builder()
       .master("local[1]")
@@ -12,36 +12,31 @@ object CsvFileToAvro extends App {
     spark
 
   }
-  def csv_to_avro(inp_csv_path: String, inp_output_path: String, inp_delimiter: String): Unit = {
+  def ValutCsvToAvro(inpCsvPath: String, inpOutputPath: String, inpDelimiter: String): Unit = {
 
-    val spark = get_spark_session
+    val spark = getSparkSession
 
-    val ds_source = spark.read.options(Map("inferSchema" -> "true", "delimiter" -> inp_delimiter, "header" -> "true")).csv(inp_csv_path)
+    import spark.implicits._
 
-    ds_source.printSchema()
+    val dsSource = spark.read.options(Map("inferSchema" -> "true", "delimiter" -> inpDelimiter, "header" -> "true")).csv(inpCsvPath).as[CsvData]
 
-    ds_source.show()
-
-    ds_source.write.format("avro").mode(SaveMode.Overwrite).save(inp_output_path)
+    dsSource.write.format("avro").mode(SaveMode.Overwrite).save(inpOutputPath)
 
   }
 
-  csv_to_avro("./src/main/resources/valut.csv", "./src/main/resources/vault.avro", ",")
+  def VaultMasterCsvToAvro(inpCsvPath: String, inpOutputPath: String, inpDelimiter: String): Unit = {
 
-  csv_to_avro("./src/main/resources/vault_master.csv", "./src/main/resources/vault_master.avro", ",")
+    val spark = getSparkSession
 
-  /*val spark = GetSparkSession
+    import spark.implicits._
 
-  val ds_vault = spark.read.options(Map("inferSchema" -> "true", "delimiter" -> ",", "header" -> "true")).csv("./src/main/resources/valut.csv")
-  ds_vault.show()
-  ds_vault.printSchema()
+    val dsSource = spark.read.options(Map("inferSchema" -> "true", "delimiter" -> inpDelimiter, "header" -> "true")).csv(inpCsvPath).as[VaultMasterData]
 
-  ds_vault.write.format("avro").mode(SaveMode.Overwrite).save("./src/main/resources/vault.avro")
+    dsSource.write.format("avro").mode(SaveMode.Overwrite).save(inpOutputPath)
 
-  val ds_vault_master = spark.read.options(Map("inferSchema" -> "true", "delimiter" -> ",", "header" -> "true")).csv("./src/main/resources/vault_master.csv")
-  ds_vault_master.show()
-  ds_vault_master.printSchema()
+  }
 
-  ds_vault_master.write.format("avro").mode(SaveMode.Overwrite).save("./src/main/resources/vault_master.avro")*/
+  ValutCsvToAvro("./src/main/resources/valut.csv", "./src/main/resources/vault.avro", ",")
+  VaultMasterCsvToAvro("./src/main/resources/vault_master.csv", "./src/main/resources/vault_master.avro", ",")
 
 }

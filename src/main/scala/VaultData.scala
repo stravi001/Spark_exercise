@@ -1,1 +1,1 @@
-case class VaultData(vaultId: Int, numberOfGoldCoins: Int, numberOfSilverCoins: Int, numberOfEuroCoins: Int)
+case class VaultData(vaultId: Int, numberOfGoldCoins: Double, numberOfSilverCoins: Double, numberOfEuroCoins: Double)
