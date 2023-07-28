@@ -76,7 +76,6 @@ object Main extends App {
   val dsVaultMaster = loadCsvToDataset[VaultMasterData](vaultMasterCsvToDatasetInputs.inpCsvPath, vaultMasterCsvToDatasetInputs.inpDelimiter, vaultMasterCsvToDatasetInputs.inpSparkSession)
   val dsJoinedDataAndMaster: Dataset[(VaultData, VaultMasterData)] = dsContent.joinWith(dsVaultMaster, dsContent("vaultID") === dsVaultMaster("vaultID"), "inner")
 
-  //TODO: proc to ku... nefunguje stejne jako lokalita?
   val vaultMaxGoldCoins = dsJoinedDataAndMaster
     .map(mp => (mp._1.numberOfGoldCoins, mp._2.name))
     .groupByKey(gk => gk._2)
