@@ -1,6 +1,7 @@
-import org.apache.spark.sql.{SparkSession}
+package sparkUtils
+import org.apache.spark.sql.SparkSession
 
-object SparkUtils extends App {
+class SparkUtils {
 
   def getSparkSession: SparkSession = {
 

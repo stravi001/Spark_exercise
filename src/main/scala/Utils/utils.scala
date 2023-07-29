@@ -1,4 +1,10 @@
-object utils extends App {
+package utils
+
+class Utils {
+
+  def defaultInputPath: String = "./src/main/resources/inputs"
+
+  def defaultOutputPath: String = "./src/main/resources/outputs"
 
   def getCount(inpColumn: String, inpWord: String): Int = {
 
@@ -7,5 +13,4 @@ object utils extends App {
     outCount
 
   }
-
 }

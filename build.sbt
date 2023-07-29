@@ -9,5 +9,5 @@ lazy val root = (project in file("."))
 
 libraryDependencies += "org.apache.spark" %% "spark-sql" % "2.4.8"
 libraryDependencies += "org.apache.spark" %% "spark-avro" % "2.4.8"
-libraryDependencies += "org.apache.logging.log4j" % "log4j-api" % "2.20.0"
-libraryDependencies += "org.apache.logging.log4j" % "log4j-core" % "2.20.0"
+libraryDependencies += "com.typesafe.scala-logging" %% "scala-logging" % "3.9.0"
+libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.3.5"
