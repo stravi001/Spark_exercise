@@ -1,7 +1,7 @@
 import org.scalatest.funsuite.AnyFunSuite
 import Utils.textUtils
 
-class TestGetCount extends AnyFunSuite {
+class GetCountTest extends AnyFunSuite {
 
   val classTextUtils = new textUtils
 
