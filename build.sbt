@@ -11,3 +11,4 @@ libraryDependencies += "org.apache.spark" %% "spark-sql" % "2.4.8"
 libraryDependencies += "org.apache.spark" %% "spark-avro" % "2.4.8"
 libraryDependencies += "com.typesafe.scala-logging" %% "scala-logging" % "3.9.0"
 libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.3.5"
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.11" % Test

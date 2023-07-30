@@ -1,6 +1,6 @@
-package utils
+package Utils
 
-class Utils {
+class textUtils {
 
   def defaultInputPath: String = "./src/main/resources/inputs"
 

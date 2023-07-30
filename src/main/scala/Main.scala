@@ -4,7 +4,7 @@ import org.apache.spark.sql.functions._
 import java.io.{File, FileOutputStream, PrintWriter}
 import org.apache.spark.sql.{Dataset, SaveMode}
 import caseClasses._
-import utils._
+import Utils._
 
 object Main extends App {
 
@@ -16,7 +16,7 @@ object Main extends App {
 
   import spark.implicits._
 
-  val classUtils = new Utils
+  val classUtils = new textUtils
   val classCsvFileToAvro = new CsvFileToAvro
 
   val inpVaultCsv = WriteCsvToAvroInputs(classUtils.defaultInputPath + "/csv/valut.csv", classUtils.defaultOutputPath + "/avro/vault.avro", ",", spark)
