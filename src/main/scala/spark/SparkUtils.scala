@@ -1,7 +1,7 @@
-package sparkUtils
+package spark
 import org.apache.spark.sql.SparkSession
 
-class SparkUtils {
+object SparkUtils {
 
   def getSparkSession: SparkSession = {
 
