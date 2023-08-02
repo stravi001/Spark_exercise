@@ -1,11 +1,11 @@
 package files
 
-import org.apache.spark.sql.{Dataset, Encoder, SaveMode, SparkSession}
+import org.apache.spark.sql.{Dataset, Encoder, SparkSession}
 
 class CsvReader(sparkSession: SparkSession) {
   def read[T: Encoder](path: String, delimiter: String): Dataset[T] = {
 
-    println(s"Reading: $path")
+    println("Reading csv: " + path)
 
     sparkSession
       .read

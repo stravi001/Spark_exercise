@@ -1,6 +1,6 @@
 package files
 
-import org.apache.spark.sql.{Dataset, Encoder, SaveMode}
+import org.apache.spark.sql.{Dataset, Encoder}
 class CsvWriter {
   def dsToCsv[T: Encoder](ds: Dataset[T], path: String, delimiter: String): Unit = {
 
@@ -12,6 +12,6 @@ class CsvWriter {
       .mode("overwrite")
       .csv(path)
 
-    println(s"Csv saved to path: $path")
+    println("Csv saved to path: " + path)
   }
 }

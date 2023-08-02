@@ -1,6 +1,6 @@
 package files
 
-import org.apache.spark.sql.{Dataset, Encoder, SaveMode}
+import org.apache.spark.sql.{Dataset, Encoder}
 
 class AvroWriter {
   def dsToAvro[T: Encoder](ds: Dataset[T], path: String): Unit = {
@@ -8,9 +8,9 @@ class AvroWriter {
     ds
       .write
       .format("avro")
-      .mode(SaveMode.Overwrite)
+      .mode("overwrite")
       .save(path)
 
-    println(s"Avro saved to path: $path")
+    println("Avro saved to path: " + path)
   }
 }
